@@ -2,4 +2,4 @@
 __pycache__
 venv
 
-# pip install django pillow
+# pip install django pillow -> manda esse pip
