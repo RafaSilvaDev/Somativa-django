@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hospital Chiara Luce | Realize sua consulta!</title>
+  </head>
+  <body>
+    <header>{%include 'header.html'%}</header>
+
+    {% for medico in dados %}
+    <div class="card" style="width: 18rem">
+      <div class="card-body">
+        {% if medico.foto %}
+        <img
+          src="{{medico.foto.url}}"
+          alt=""
+          style="
+            float: right;
+            margin: 10px;
+            border-radius: 40px;
+            height: 50px;
+            width: 50px;
+          "
+        />
+        {% endif %}
+        <h5 class="card-title">{{medico.nome}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{medico.especialidade}}</h6>
+        <p class="card-text">{{medico.descricao}}</p>
+        <p>
+          <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Agendar Consulta
+          </a>
+        </p>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </body>
+</html>

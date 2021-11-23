@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    <title>Hospital Chiara Luce | Login</title>
+  </head>
+  <body>
+    <main>
+      <section class="imagepanel">
+        <img src="{% static 'images/dj.png' %}" alt="" />
+      </section>
+
+      <section class="formpanel">
+        {% include 'msg.html' %}
+        <form
+          action="{% url 'login' %}"
+          method="post"
+          enctype="multipart/form-data"
+          class="form_container"
+        >
+          {% csrf_token %}
+          <h2>Faça seu login</h2>
+          {{ form }}
+          <button type="submit" class="btn btn-success">Entrar</button>
+          <p>
+            Não possui login? <a href="{% url 'cadastro' %}">Cadastre-se já!</a>
+          </p>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
