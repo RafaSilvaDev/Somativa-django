@@ -59,12 +59,13 @@
         </li>
         {% endif %}
       </ul>
-      <form class="d-flex">
+      <form class="d-flex" action="{%url 'buscar' %}" method="GET">
         <input
           class="form-control me-2"
           type="search"
           placeholder="Pesquise por um médico"
           aria-label="Search"
+          name="buscar"
         />
         <button class="btn btn-outline-success" type="submit">Buscar</button>
       </form>

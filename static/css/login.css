@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
 main {
@@ -30,28 +31,93 @@ main {
 
 .form_container {
   width: 60%;
-  height: 70%;
+  height: 50%;
   margin: 40px;
-  box-shadow: 3px 3px 15px 0px #000000;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   padding: 20px;
 
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: space-around;
   flex-direction: column;
 
   border-radius: 5px;
 }
 
-.form-group {
+.form_container_cad {
+  width: 60%;
+  height: 85%;
+  margin: 40px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  padding: 20px;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  flex-direction: column;
+
+  border-radius: 5px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 40%;
   width: 100%;
+}
+
+.input {
+  margin: 5px 0 15px 0;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 15px;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+}
+
+.input:focus{
+  transition: all .4s;
+  box-shadow: rgba(28, 122, 217, 0.15) 0px 15px 25px, rgba(28, 122, 217, 0.05) 0px 5px 10px;
+}
+
+
+.btn-send {
+  width: 100%;
+  margin-top: -50px;
+  background-color: #1c7ad9;
+  padding: 15px;
+  color: #fff;
+  font-size: 1.5rem;
+  border: 0;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  transition: all .4s;
+}
+
+.btn-cad{
   margin: 10px 0;
 }
 
-button {
-  width: 100%;
-  margin-top: 15px;
+.btn-send:hover{
+  background-color: #155ca2;
+  transition: all .4s;
+}
+
+.form_container a,
+.form_container_cad a{
+  color: #1c7ad9;
+  text-decoration: none;
+  transition: all .4s;
+}
+
+.form_container a:hover,
+.form_container_cad a:hover{
+  color: #61b0ff;
+  transition: all .4s;
 }
 
 h2 {

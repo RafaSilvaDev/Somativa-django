@@ -6,6 +6,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('buscar/', views.buscar, name='buscar'),
     path('agendar/ <int:xid>/', views.agendar, name='agendar'),
     path('admin/', admin.site.urls),
     path('user/', include('paciente.urls')),

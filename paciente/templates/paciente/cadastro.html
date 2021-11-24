@@ -19,14 +19,12 @@
         <form
           action="{% url 'cadastro' %}"
           method="post"
-          class="form_container"
+          class="form_container_cad"
         >
           {% csrf_token %}
           <h2>Faça seu cadastro</h2>
           {{form}}
-          <div class="form-group">
-            <button type="submit" class="btn btn-success">Cadastrar</button>
-          </div>
+          <button type="submit" class="btn-send btn-cad">Cadastrar</button>
           <p>
             Já possui cadastro? Experimente
             <a href="{% url 'login' %}">Fazer login!</a>

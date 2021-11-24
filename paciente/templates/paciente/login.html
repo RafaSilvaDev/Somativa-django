@@ -24,8 +24,10 @@
         >
           {% csrf_token %}
           <h2>Faça seu login</h2>
-          {{ form }}
-          <button type="submit" class="btn btn-success">Entrar</button>
+          <div class="form">
+            {{ form }}
+          </div>
+          <button type="submit" class="btn-send">Entrar</button>
           <p>
             Não possui login? <a href="{% url 'cadastro' %}">Cadastre-se já!</a>
           </p>

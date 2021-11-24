@@ -5,62 +5,65 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {%include 'header.html'%}{% include 'msg.html' %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
     <title>Hospital Chiara Luce | Realize sua consulta!</title>
   </head>
   <body>
-    <header>{%include 'header.html'%}{% include 'msg.html' %}</header>
-
-    {% for medico in dados %}
-    <div class="card" style="width: 18rem">
-      <div class="card-body">
-        {% if medico.foto %}
-        <img
-          src="{{medico.foto.url}}"
-          alt=""
-          style="
-            float: right;
-            margin: 10px;
-            border-radius: 40px;
-            height: 50px;
-            width: 50px;
-          "
-        />
-        {% endif %}
-        <h5 class="card-title">{{medico.nome}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{medico.formacao}}</h6>
-        <p class="card-text">{{medico.descricao}}</p>
-        {% if user.is_authenticated %}
-        <p>
-          <a
-            class="btn btn-primary"
-            data-bs-toggle="collapse"
-            href="#collapseExample{{medico.id}}"
-            role="button"
-            aria-expanded="false"
-            aria-controls="collapseExample"
-          >
-            Agendar Consulta
-          </a>
+    <section class="main" >
+      <div class="info">
+        <h1 class="main-title">Hospital Chiara Luce</h1>
+        <h3 class="main-sub">Realize sua consulta!</h3>
+        <p class="main-p">
+          Com profissionais qualificados e equipamentos modernos, o Hospital Chiara Luce oferece a você um serviço de qualidade e confiabilidade.
         </p>
-        <div class="collapse" id="collapseExample{{medico.id}}">
-          <div class="card card-body">
-            <form
-              action="{% url 'agendar' medico.id %}"
-              method="post"
-              enctype="multipart/form-data"
-              class="form_container"
-              style="display: flex; flex-direction: column;"
-            >
-              {% csrf_token %}
-              <h2>Agende sua consulta</h2>
-              {{form}}
-              <button type="submit" class="btn btn-success">Agendar</button>
-            </form>
-          </div>
-        </div>
-        {% endif %}
+        <a href="#doctors" class="main-btn">Conheça nossos profissionais</a>
       </div>
-    </div>
-    {% endfor %}
+    </section>
+    <section class="content" id="doctors">
+      <h2>Conheça nossos principais doutores:</h2>
+      {% for medico in dados %}
+      <div class="card doctor-card" style="width: 18rem">
+        <div class="card-body">
+          {% if medico.foto %}
+          <img class="doctor-img" src="{{medico.foto.url}}" alt="" />
+          {% endif %}
+          <h5 class="card-title">{{medico.nome}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{medico.formacao}}</h6>
+          <p class="card-text">{{medico.descricao}}</p>
+          {% if user.is_authenticated %}
+          <p>
+            <a
+              class="btn btn-primary"
+              data-bs-toggle="collapse"
+              href="#collapseExample{{medico.id}}"
+              role="button"
+              aria-expanded="false"
+              aria-controls="collapseExample"
+            >
+              Agendar Consulta
+            </a>
+          </p>
+          <div class="collapse" id="collapseExample{{medico.id}}">
+            <div class="card card-body">
+              <form
+                action="{% url 'agendar' medico.id %}"
+                method="post"
+                enctype="multipart/form-data"
+                class="form_container form-consulta"
+                style="display: flex; flex-direction: column"
+              >
+                {% csrf_token %}
+                <h3>Agende sua consulta</h3>
+                {{form}}
+                <button type="submit" class="btn btn-success">Agendar</button>
+              </form>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </section>
   </body>
 </html>

@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main{
+  clip-path: ellipse(98% 60% at 50% 35%);
+  height: 80vh;
+  width: 100vw !important;
+  animation: slide 20s infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.main .info{
+  height: auto;
+  max-width: 600px;
+}
+
+.main .info .main-title, .main-sub, .main-p{
+  color: #fff;
+}
+
+.main .info .main-btn{
+  text-decoration: none;
+  background-color: #1c7ad9;
+  color: #fff;
+  font-size: 1rem;
+  border: 0;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 20px;
+  transition: all .4s;
+}
+
+.main .info a:hover{
+  background-color: #155ca2;
+  transition: all .4s;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.doctor-card{
+  width: 60% !important;
+  margin: 20px 0;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.doctor-img {
+  float: right;
+  margin: 10px;
+  border-radius: 40px;
+  height: 70px;
+  width: 70px;
+}
+
+.form-consulta input{
+  border: none;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+@keyframes slide {
+  0%, 100% {
+    background: url('../images/cirurgia.jpg');
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.4);
+    background-position: center;
+    background-size: cover;
+  }
+  25% {
+    background: url('../images/enfermeira.jpg');
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.4);
+    background-position: center;
+    background-size: cover;
+  }
+  50% {
+    background: url('../images/microscopio.jpg');
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.4);
+    background-position: center;
+    background-size: cover;
+  }
+  75% {
+    background: url('../images/vista-hospital.jpg');
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.4);
+    background-position: center;
+    background-size: cover;
+  }
+}
