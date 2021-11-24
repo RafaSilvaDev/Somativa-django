@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -28,16 +29,36 @@
         <h5 class="card-title">{{medico.nome}}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{{medico.especialidade}}</h6>
         <p class="card-text">{{medico.descricao}}</p>
+        {% if user.is_authenticated %}
         <p>
-          <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          <a
+            class="btn btn-primary"
+            data-bs-toggle="collapse"
+            href="#collapseExample{{medico.id}}"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseExample"
+          >
             Agendar Consulta
           </a>
         </p>
-        <div class="collapse" id="collapseExample">
+        <div class="collapse" id="collapseExample{{medico.id}}">
           <div class="card card-body">
-            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+            <form
+              action="{% url 'agendar' medico.id %}"
+              method="post"
+              enctype="multipart/form-data"
+              class="form_container"
+              style="display: flex; flex-direction: column;"
+            >
+              {% csrf_token %}
+              <h2>Agende sua consulta</h2>
+              {{form}}
+              <button type="submit" class="btn btn-success">Agendar</button>
+            </form>
           </div>
         </div>
+        {% endif %}
       </div>
     </div>
     {% endfor %}

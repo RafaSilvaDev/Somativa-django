@@ -1,4 +1,7 @@
 from django import forms
+from django.forms.models import ModelForm
+
+from consulta.models import Consulta
 
 class UserLogin(forms.Form):
     cpf = forms.CharField(
@@ -65,37 +68,46 @@ class UserRegister(forms.Form):
         }
       )
     )
+                 
+class ConsultaForm(ModelForm):
+    class Meta:
+        model = Consulta
+        fields = ['data', 'hora']
+        widgets = {
+            'data': forms.DateTimeInput(attrs={'class': 'input', 'type': 'date'}),
+            'hora': forms.TimeInput(attrs={'class': 'input', 'type': 'time'}),
+        }
 
-class ConsultaForm(forms.Form):
-    data = forms.DateField(
-      label='Data',
-      widget=forms.DateInput(
-        attrs={
-          'class': 'input'
-        }
-      )
-    )
-    hora = forms.ChoiceField(
-      label='Hora',
-      widget=forms.TimeInput(
-        attrs={
-          'class': 'input'
-        }
-      )
-    )
-    paciente = forms.CharField(
-      label='Paciente',
-      widget=forms.TextInput(
-        attrs={
-          'class': 'input'
-        }
-      )
-    )
-    medico = forms.CharField(
-      label='Médico',
-      widget=forms.TextInput(
-        attrs={
-          'class': 'input'
-        }
-      )
-    )
+# class ConsultaForm(forms.Form):
+#     data = forms.DateField(
+#       label='Data',
+#       widget=forms.DateInput(
+#         attrs={
+#           'class': 'input'
+#         }
+#       )
+#     )
+#     hora = forms.TimeField(
+#       label='Hora',
+#       widget=forms.TimeInput(
+#         attrs={
+#           'class': 'input'
+#         }
+#       )
+#     )
+#     paciente = forms.CharField(
+#       label='Paciente',
+#       widget=forms.TextInput(
+#         attrs={
+#           'class': 'input'
+#         }
+#       )
+#     )
+#     medico = forms.CharField(
+#       label='Médico',
+#       widget=forms.TextInput(
+#         attrs={
+#           'class': 'input'
+#         }
+#       )
+#     )
