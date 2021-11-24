@@ -76,6 +76,7 @@ class ConsultaForm(ModelForm):
         widgets = {
             'data': forms.DateTimeInput(attrs={'class': 'input', 'type': 'date'}),
             'hora': forms.TimeInput(attrs={'class': 'input', 'type': 'time'}),
+            # 'exame': forms.TextInput(attrs={'class': 'input'}),
         }
 
 # class ConsultaForm(forms.Form):

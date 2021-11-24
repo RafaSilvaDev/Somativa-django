@@ -7,6 +7,7 @@ class Consulta(models.Model):
     hora = models.TimeField()
     paciente = models.TextField(max_length=100)
     medico = models.ForeignKey(Medico, on_delete=models.CASCADE)
+    # exame = models.TextField(max_length=100)
 
     def __str__(self):
         return self.paciente.nome

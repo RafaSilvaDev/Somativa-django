@@ -8,7 +8,7 @@
     <title>Hospital Chiara Luce | Realize sua consulta!</title>
   </head>
   <body>
-    <header>{%include 'header.html'%}</header>
+    <header>{%include 'header.html'%}{% include 'msg.html' %}</header>
 
     {% for medico in dados %}
     <div class="card" style="width: 18rem">
@@ -27,7 +27,7 @@
         />
         {% endif %}
         <h5 class="card-title">{{medico.nome}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{medico.especialidade}}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">{{medico.formacao}}</h6>
         <p class="card-text">{{medico.descricao}}</p>
         {% if user.is_authenticated %}
         <p>
