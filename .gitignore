@@ -3,3 +3,4 @@ __pycache__
 venv
 
 # pip install django pillow -> manda esse pip
+# tenta realizar a consulta pelo id do usuario pra salvar em paciente
