@@ -6,8 +6,8 @@ from django.conf import settings
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('buscar/', views.buscar, name='buscar'),
-    path('agendar/ <int:xid>/', views.agendar, name='agendar'),
     path('admin/', admin.site.urls),
+    path('buscar/', views.buscar, name='buscar'),
+    path('agendar/<int:xid>/', views.agendar, name='agendar'),
     path('user/', include('paciente.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

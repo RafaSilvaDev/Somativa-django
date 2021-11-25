@@ -72,11 +72,11 @@ class UserRegister(forms.Form):
 class ConsultaForm(ModelForm):
     class Meta:
         model = Consulta
-        fields = ['data', 'hora']
+        fields = ['data', 'hora', 'descricao']
         widgets = {
             'data': forms.DateTimeInput(attrs={'class': 'input', 'type': 'date'}),
             'hora': forms.TimeInput(attrs={'class': 'input', 'type': 'time'}),
-            # 'exame': forms.TextInput(attrs={'class': 'input'}),
+            'descricao': forms.Textarea(attrs={'class': 'input', 'rows': '10'}),
         }
 
 # class ConsultaForm(forms.Form):

@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% include 'header.html' %}{% include 'msg.html' %}
+    <link rel="stylesheet" href="{% static 'css/dash.css' %}" />
+    <title>Hospital Chiara Luce | Dashboard</title>
+  </head>
+  <body>
+    <section class="main">
+      <h1>Bem vind@ a sua aba de consultas!</h1>
+      <h5>Aqui você pode verificar suas consultas agendadas</h5>
+    </section>
+    <div class="container">
+      {% for dados in consultas %}
+      <div class="card" style="margin: 30px;">
+        <div class="card-header">
+          <b>{{dados.medico}}</b>
+        </div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>{{ dados.data }}</p>
+            <p>{{ dados.hora }}</p>
+            <footer class="blockquote-footer">
+              <cite title="Source Title">"{{dados.descricao}}"</cite>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% include 'footer.html' %}
+  </body>
+</html>

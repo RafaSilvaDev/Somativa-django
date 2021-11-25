@@ -22,16 +22,18 @@ def agendar(request, xid):
     form = ConsultaForm(request.POST or None)
     if str(request.method) == "POST":
         if form.is_valid():
+            user = request.user.first_name
             data = form.cleaned_data.get("data")
             hora = form.cleaned_data.get("hora")
+            desc = form.cleaned_data.get("descricao")
             medico = Medico.objects.get(id=xid)
-            paciente = User.objects.get(first_name=request.user.first_name)
+            paciente = user
             email = User.objects.get(email=request.user.email)
             
-            consulta = Consulta(data=data, hora=hora, medico=medico, paciente=paciente)
+            consulta = Consulta(data=data, hora=hora, descricao=desc, medico=medico, paciente=paciente)
             consulta.save()
 
-            send_email_consulta(email)
+            # send_email_consulta(email, data, hora, medico)
             
             messages.success(request, "Consulta agendada com sucesso!")
             return redirect('index')
@@ -49,7 +51,7 @@ def buscar(request):
         redirect('index')
         
     dados = Medico.objects.order_by('nome').filter(
-        nome__icontains = x# | ou
+        nome__icontains = x
     )
     return render(request,'home/index.html',{'dados':dados})
 

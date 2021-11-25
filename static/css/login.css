@@ -25,6 +25,11 @@ main {
   background-color: #1c7ad9;
 }
 
+.imagepanel .logo{
+  height: 300px;
+  width: 300px;
+}
+
 .formpanel {
   background-color: #ecf0f1;
 }

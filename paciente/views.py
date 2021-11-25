@@ -1,8 +1,11 @@
+from datetime import datetime
+
 from django.contrib import auth, messages
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.core.validators import validate_email
 from form import UserLogin, UserRegister
+from consulta.models import Consulta
 
 def login(request):
     form = UserLogin(request.POST or None)
@@ -69,5 +72,21 @@ def cadastrar(request):
     else:
         return render(request, 'paciente/cadastro.html', {'form': form})
 
+def buscar(request):
+    x = request.GET['buscar'] 
+
+    if x is None or not x:
+        messages.add_message(request,messages.INFO, 'Digite um valor valido')
+        redirect('dash')
+        
+    consultas = Consulta.objects.order_by('medico').filter(
+        medico__nome__icontains=x,
+    )
+    if not consultas:
+        messages.add_message(request,messages.WARNING, 'Nenhum resultado encontrado')
+        redirect('index')
+    return render(request,'paciente/dashboard.html',{'consultas':consultas})
+
 def dashboard(request):
-    return render(request, 'paciente/dashboard.html')
+    consultas = Consulta.objects.filter(paciente=request.user.first_name).order_by('data')
+    return render(request, 'paciente/dashboard.html', {'consultas': consultas})

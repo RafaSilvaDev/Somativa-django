@@ -1,21 +1,21 @@
 {% for msg in messages %} {% if msg.tags == 'error' %}
 <div
   class="{{msg.tags}}"
-  style="background-color: lightcoral; padding: 20px; border: 1px solid darkred; border-radius: 15px;"
+  style="background-color: lightcoral; padding: 20px; border: 1px solid darkred; border-radius: 15px; margin: 10px 0;"
 >
   {{msg}}
 </div>
 {% elif msg.tags == 'success' %}
 <div
   class="{{msg.tags}}"
-  style="background-color: lightgreen; padding: 20px; border: 1px solid darkgreen; border-radius: 15px;"
+  style="background-color: lightgreen; padding: 20px; border: 1px solid darkgreen; border-radius: 15px; margin: 10px 0;"
 >
   {{msg}}
 </div>
 {% elif msg.tags == 'danger' %}
 <div
   class="{{msg.tags}}"
-  style="background-color: lightyellow; padding: 20px; border: 1px solid darksalmon; border-radius: 15px;"
+  style="background-color: lightyellow; padding: 20px; border: 1px solid darksalmon; border-radius: 15px; margin: 10px 0;"
 >
   {{msg}}
 </div>
