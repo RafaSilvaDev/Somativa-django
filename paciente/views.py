@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect
 from django.core.validators import validate_email
 from form import UserLogin, UserRegister
 from consulta.models import Consulta
+from medico.models import Medico
 
 def login(request):
     form = UserLogin(request.POST or None)
@@ -72,9 +73,24 @@ def cadastrar(request):
     else:
         return render(request, 'paciente/cadastro.html', {'form': form})
 
-def buscar(request):
-    x = request.GET['buscar'] 
+def buscar_medico(request):
+    x = request.GET['buscar']
 
+    if x is None or not x:
+        messages.add_message(request,messages.INFO, 'Digite um valor valido')
+        redirect('dash')
+        
+    medicos = Medico.objects.order_by('nome').filter(
+        nome__icontains=x,
+    )
+    if not medicos:
+        messages.add_message(request,messages.WARNING, 'Nenhum resultado encontrado')
+        redirect('index')
+    return render(request,'home/index.html',{'medicos':medicos})
+
+def buscar_consulta(request):
+    x = request.GET['buscar'] 
+    print(dir(request))
     if x is None or not x:
         messages.add_message(request,messages.INFO, 'Digite um valor valido')
         redirect('dash')

@@ -58,11 +58,13 @@
             href="{% url 'login' %}"
             style="color: cornflowerblue"
             >Login</a
+            
           >
         </li>
         {% endif %}
       </ul>
-      <form class="d-flex" action="{%url 'buscar' %}" method="GET">
+      {% if '/user' in request.get_full_path %}
+      <form class="d-flex" action="{%url 'buscarC' %}" method="GET">
         <input
           class="form-control me-2"
           type="search"
@@ -72,6 +74,20 @@
         />
         <button class="btn btn-outline-primary" type="submit">Buscar</button>
       </form>
+
+      {% else %}
+
+      <form class="d-flex" action="{%url 'buscarM' %}" method="GET">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Pesquise um médico"
+          aria-label="Search"
+          name="buscar"
+        />
+        <button class="btn btn-outline-primary" type="submit">Buscar</button>
+      </form>
+      {% endif %}
     </div>
   </div>
 </nav>

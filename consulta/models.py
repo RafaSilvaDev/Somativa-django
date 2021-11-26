@@ -1,5 +1,4 @@
 from django.db import models
-
 from medico.models import Medico
 
 class Consulta(models.Model):
