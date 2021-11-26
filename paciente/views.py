@@ -9,6 +9,7 @@ from consulta.models import Consulta
 from medico.models import Medico
 
 def login(request):
+    
     form = UserLogin(request.POST or None)
     if str(request.method) == "POST":
         if form.is_valid():
